@@ -1,47 +1,72 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+
 #include "mylib/mylib.h"
 
-void wmachine_onslow(){
-
-    printf("  _________________\n");
-    printf(" |                 |     Status : On\n");
-    printf(" |   ___________   |     Speed  : Low\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||         O|  |\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||__________|  |\n");
-    printf(" |                 |\n");
-    printf(" |_________________|\n");
+void green()
+{
+    printf("\033[1;32m");
 }
 
-void wmachine_onfast(){
-
-    printf("  _________________\n");
-    printf(" |                 |     Status : On\n");
-    printf(" |   ___________   |     Speed  : High\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||         O|  |\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||__________|  |\n");
-    printf(" |                 |\n");
-    printf(" |_________________|\n");
+void red()
+{
+    printf("\033[1;31m");
 }
-void wmachine_off(){
 
-    printf("  _________________\n");
-    printf(" |                 |     Status : Off\n");
-    printf(" |   ___________   |     Speed  : -\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||         O|  |\n");
-    printf(" |  ||          |  |\n");
-    printf(" |  ||__________|  |\n");
-    printf(" |                 |\n");
-    printf(" |_________________|\n");
+void reset()
+{
+    printf("\033[0m");
 }
+
+void wmachine_onslow()
+{
+
+    green();
+    printf("  __________________\n");
+    printf(" |_ON_|_SLOW________|\n");
+    reset();
+    printf(" |     ________     |\n");
+    printf(" |    //       \\    |\n");
+    printf(" |   //    /    \\   |\n");
+    printf(" |  ((   / / /  ))  |\n");
+    printf(" |   \\   /     //   |\n");
+    printf(" |    \\_______//    |\n");
+    printf(" |__________________|\n");
+}
+
+void wmachine_onfast()
+{
+
+    green();
+    printf("  __________________\n");
+    printf(" |_ON_|_FAST________|\n");
+    reset();
+    printf(" |     ________     |\n");
+    printf(" |    //   /   \\  ) |\n");
+    printf(" |   //  / / /  \\   |\n");
+    printf(" |  (( / / / /  ))  |\n");
+    printf(" |   \\  / / /  //   |\n");
+    printf(" | (  \\_______//    |\n");
+    printf(" |__________________|\n");
+}
+
+void wmachine_off()
+{
+
+    red();
+    printf("  __________________\n");
+    printf(" |_OFF_|____________|\n");
+    reset();
+    printf(" |     ________     |\n");
+    printf(" |    //       \\    |\n");
+    printf(" |   //         \\   |\n");
+    printf(" |  (            )  |\n");
+    printf(" |   \\         //   |\n");
+    printf(" |    \\_______//    |\n");
+    printf(" |__________________|\n");
+}
+
 
 int main(void){
     // initial state

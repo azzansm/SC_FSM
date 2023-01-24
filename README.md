@@ -4,7 +4,7 @@ The washing machine has three states, i.e., the on/off button and the speed butt
 
 ## FSM
 The following is an FSM diagram that represents the washing machine use case:
-<img src="images/diagram.png" width=65% height=65%>
+<img src="images/diagram2.png" width=65% height=65%>
 
 ## Transition Table
 From the FSM above, below is the transition table:

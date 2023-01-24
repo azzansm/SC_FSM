@@ -72,36 +72,27 @@ int main(void){
     // initial state
     int s0 = 0, s1 = 0, b0 = 0, b1 = 0, n0 = 0, n1 = 0, o0 = 0, o1 = 0;
 
-    while(true){
-        if ((s0 == 0) && (s1 == 0)){
-            wmachine_off(); // the washing machine is off
-            if ((b0 == 0) && (b1 == 0)){
-                wmachine_off(); // no change
-            } else if ((b0 == 0) && (b1 == 1)){
-                wmachine_onslow(); // 01 is the on/off button, so the washing machine turns on
-            } else if ((b0 == 1) && (b1 == 0)){
-                wmachine_off(); // 10 is the speed button (not on/off button), so nothing changes
-            }
-        }
-        else if((s0 == 0) && (s1 == 1)){
-            wmachine_onslow(); // washing machine is on at a low speed
-            if ((b0 == 0) && (b1 == 0)){
-                wmachine_onslow(); // no change
-            } else if((b0 == 0) && (b1 == 1)){
-                wmachine_off(); // 01 is the on/off button, so the washing machine turns off
-            } else if((b0 == 1) && (b1 == 0)){
-                wmachine_onfast(); // speed button is pressed, so the washing machine is on at a high speed
-            }
-        }
-        else if((s0 == 1) && (s1== 0)){
-            wmachine_onfast(); // washing machine is on at a high speed
-            if ((b0 == 0) && (b1 == 0)){
-                wmachine_onfast(); // no change
-            } else if((b0 == 0) && (b1 == 1)){
-                wmachine_off(); // 01 is the on/off button, so the washing machine turns off
-            } else if((b0 == 1) && (b1 == 0)){
-                wmachine_onslow(); // speed button is pressed, so the washing machine is on at a low speed
-            }
+    while (true) {
+        printf("\033[2J"); // clear screen
+        printf("\033[1;1H"); // cursor to upper left
+
+        if ((s0 == 0) && (s1 == 0)) {
+          wmachine_off(); // the washing machine is off
+          printf("Current state: %d %d", s0, s1);
+          printf("\nInput: %d %d", b0, b1);
+          printf("\nOutput: %d %d\n", o0, o1);
+
+        } else if ((s0 == 0) && (s1 == 1)) {
+          wmachine_onslow(); // washing machine is on at a low speed
+          printf("Current state: %d %d", s0, s1);
+          printf("\nInput: %d %d", b0, b1);
+          printf("\nOutput: %d %d\n", o0, o1);
+
+        } else if ((s0 == 1) && (s1 == 0)) {
+          wmachine_onfast(); // washing machine is on at a high speed
+          printf("Current state: %d %d", s0, s1);
+          printf("\nInput: %d %d", b0, b1);
+          printf("\nOutput: %d %d\n", o0, o1);
         }
 
         b0 = 0;
@@ -130,5 +121,3 @@ int main(void){
     return 0;
 
 }
-
-    
